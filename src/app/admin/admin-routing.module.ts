@@ -9,7 +9,15 @@ const routes: Routes = [
         path: '', component: AlayoutComponent, children:[
             { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
 
-            { path: 'dashboard', component: DashboardComponent}
+            { path: 'dashboard', component: DashboardComponent},
+            {
+                path: 'users', loadChildren: () => import('./user/user.module')
+                    .then(m => m.UserModule)
+            },
+            {
+                path: 'cocktails', loadChildren: () => import('./cocktail/cocktail.module')
+                    .then(m => m.CocktailModule)
+            }
         ]
     }
 ];
