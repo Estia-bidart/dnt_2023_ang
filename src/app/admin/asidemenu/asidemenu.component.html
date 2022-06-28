@@ -1,1 +1,16 @@
-<p>asidemenu works!</p>
+Menu
+<ul>
+    <li *ngFor="let item of menus">
+        <a *ngIf="item.path; else sousMenu" [routerLink]="[item.path]">{{ item.name }}</a>
+        <ng-template #sousMenu>
+            {{ item.name }}
+            <br>
+            <ul>
+                <li *ngFor="let child of item.children">
+                    <a [routerLink]="[child.path]">{{ child.name }}</a>
+                </li>
+            </ul>
+        </ng-template>
+    </li>
+</ul>
+

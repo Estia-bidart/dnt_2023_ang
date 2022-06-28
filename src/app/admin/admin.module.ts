@@ -17,7 +17,7 @@ import { AsidemenuComponent } from './asidemenu/asidemenu.component';
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
   ]
 })
 export class AdminModule { }

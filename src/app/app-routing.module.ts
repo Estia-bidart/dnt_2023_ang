@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorComponent } from './partials/error/error.component';
+import { AuthGuard } from './_helpers/auth.guard';
 
 const routes: Routes = [
   {
@@ -9,7 +10,11 @@ const routes: Routes = [
   },
   {
     path: 'admin', loadChildren: () => import('./admin/admin.module')
-      .then(m => m.AdminModule)
+      .then(m => m.AdminModule), canActivate: [AuthGuard]
+  },
+  {
+    path: 'auth', loadChildren: () => import('./auth/auth.module')
+      .then(m => m.AuthModule)
   },
   {
     path: '**', component: ErrorComponent

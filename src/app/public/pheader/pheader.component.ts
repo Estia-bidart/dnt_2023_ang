@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pheader',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PheaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  admin(): void{
+    this.router.navigate(['admin'])
   }
 
 }
