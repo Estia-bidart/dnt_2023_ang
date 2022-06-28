@@ -1,0 +1,16 @@
+table{
+    width: 100%;
+}
+
+.delete{
+    color: red;
+    cursor: pointer;
+    border: solid 1px red;
+    height: 21px;
+    width: 21px;
+    display: block;
+    text-align: center;
+    line-height: 21px;
+    border-radius: 21px;
+    font-size: 13px;
+}

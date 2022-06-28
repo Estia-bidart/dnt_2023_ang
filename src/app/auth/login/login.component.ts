@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ICredentials } from 'src/app/_interfaces/credentials';
+import { AuthService } from 'src/app/_services/auth.service';
+import { TokenService } from 'src/app/_services/token.service';
 
-interface IToken{
-  access_token: string
-}
 
 @Component({
   selector: 'app-login',
@@ -13,25 +13,23 @@ interface IToken{
 })
 export class LoginComponent implements OnInit {
 
-  credentials = {
+  credentials: ICredentials = {
     email: '',
     password: ''
   }
 
   constructor(
-    private http: HttpClient,
-    private router: Router
+    private authService: AuthService,
+    private tokenService: TokenService
   ) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(): void{
-    this.http.post<IToken>('http://20.39.234.201:8080/auth/login', this.credentials).subscribe(
+    this.authService.login(this.credentials).subscribe(
       data => {
-        console.log(data.access_token)
-        localStorage.setItem('token', data.access_token)
-        this.router.navigate(['admin'])
+        this.tokenService.saveToken(data.access_token)        
       },
       err => console.log(err)
     )
