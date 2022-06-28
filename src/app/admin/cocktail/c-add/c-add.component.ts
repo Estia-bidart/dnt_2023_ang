@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CocktailService } from 'src/app/_services/cocktail.service';
 
 @Component({
@@ -15,14 +16,17 @@ export class CAddComponent implements OnInit {
     recette: ''
   }
 
-  constructor(private cocktailService: CocktailService) { }
+  constructor(
+    private cocktailService: CocktailService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(){
     this.cocktailService.addCocktail(this.cocktail).subscribe(
-      data => console.log(data),
+      () => this.router.navigate(['/admin/cocktails']),
       err => console.log(err)
     )
   }

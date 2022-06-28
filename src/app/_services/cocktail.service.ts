@@ -18,12 +18,16 @@ export class CocktailService {
     return this.http.get<IDataCocktail>(this.url)
   }
 
-  getCocktail(cid: string): Observable<ISingleCocktail>{
+  getCocktail(cid: string | null): Observable<ISingleCocktail>{
     return this.http.get<ISingleCocktail>(this.url+'/'+cid)
   }
 
   addCocktail(cocktail: ICocktail): Observable<IApi>{
     return this.http.put<IApi>(this.url, cocktail)
+  }
+
+  updateCocktail(cocktail: ICocktail): Observable<IApi>{
+    return this.http.patch<IApi>(this.url+'/'+cocktail.id, cocktail)
   }
 
   deleteCocktail(id: number | undefined): Observable<null>{

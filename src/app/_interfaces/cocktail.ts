@@ -6,7 +6,7 @@ export interface ICocktail{
     recette: string
     createdAt?: string
     updatedAt?: string
-    deletedAt?: string
+    deletedAt?: string | null
 }
 
 export interface ISingleCocktail{

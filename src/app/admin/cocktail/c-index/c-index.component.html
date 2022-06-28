@@ -11,7 +11,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let cocktail of cocktailList">
-            <td>{{ cocktail.id }}</td>
+            <td><a [routerLink]="['edit', cocktail.id]">{{ cocktail.id }}</a></td>
             <td>{{ cocktail.nom }}</td>
             <td>{{ cocktail.description }}</td>
             <td>{{ cocktail.recette }}</td>
