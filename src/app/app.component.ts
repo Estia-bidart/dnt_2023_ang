@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 import { ApiErrorService } from './_subjects/api-error.service';
 
 @Component({
@@ -19,7 +21,12 @@ export class AppComponent implements OnInit{
   message = 'Test'
   display = false
 
-  constructor(private apiErrorService: ApiErrorService){}
+  constructor(
+    private apiErrorService: ApiErrorService,
+    private titleService: Title
+  ){
+    this.titleService.setTitle(environment.title)
+  }
 
   ngOnInit(){
     this.apiErrorService.apiError.subscribe(
