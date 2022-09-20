@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ITokenUser } from 'src/app/_interfaces/user';
+import { TokenService } from 'src/app/_services/token.service';
 
 @Component({
   selector: 'app-aheader',
@@ -8,13 +9,24 @@ import { Router } from '@angular/router';
 })
 export class AheaderComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  message = 'Tout va bien'
+  user: ITokenUser = {
+    id: 0,
+    nom: '',
+    prenom: '',
+    email: ''
+  }
 
-  ngOnInit(): void {
+  constructor(
+    private tokenService : TokenService
+  ) { }
+
+  ngOnInit(): void {  
+    this.user = this.tokenService.getPayload()
   }
 
   logout(): void{
-    this.router.navigate(['home'])
+    this.tokenService.clearToken()
   }
 
 }

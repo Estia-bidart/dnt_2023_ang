@@ -212,6 +212,7 @@ import { CIndexComponent } from &#x27;./c-index/c-index.component&#x27;;
 import { CEditComponent } from &#x27;./c-edit/c-edit.component&#x27;;
 import { CAddComponent } from &#x27;../cocktail/c-add/c-add.component&#x27;;
 import { CDeleteComponent } from &#x27;./c-delete/c-delete.component&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
 
 
 @NgModule({
@@ -223,7 +224,8 @@ import { CDeleteComponent } from &#x27;./c-delete/c-delete.component&#x27;;
   ],
   imports: [
     CommonModule,
-    CocktailRoutingModule
+    CocktailRoutingModule,
+    FormsModule
   ]
 })
 export class CocktailModule { }

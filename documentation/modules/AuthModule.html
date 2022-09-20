@@ -163,6 +163,7 @@
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { LoginComponent } from &#x27;./login/login.component&#x27;;
 import { AuthRoutingModule } from &#x27;./auth-routing.module&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
 
 
 
@@ -172,7 +173,8 @@ import { AuthRoutingModule } from &#x27;./auth-routing.module&#x27;;
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    FormsModule
   ]
 })
 export class AuthModule { }

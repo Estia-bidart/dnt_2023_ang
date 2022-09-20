@@ -1,1 +1,22 @@
-<p>u-index works!</p>
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Email</th>
+            <th>Dt Création</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of userList">
+            <td><a [routerLink]="['edit', user.id]">{{ user.id }}</a></td>
+            <td>{{ user.nom }}</td>
+            <td>{{ user.prenom }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.createdAt | date:'dd/MM/yyyy'}}</td>
+            <td><span class="delete" (click)="delete()">X</span></td>
+        </tr>
+    </tbody>
+</table>

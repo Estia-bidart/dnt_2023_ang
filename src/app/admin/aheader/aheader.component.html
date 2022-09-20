@@ -1,4 +1,4 @@
 <header>
-    <p>Bonjour admin</p>
+    <p>Bonjour {{ user.prenom | titlecase }} {{ user.nom | titlecase }}</p>
     <button (click)="logout()">Logout</button>
 </header>

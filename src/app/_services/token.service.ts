@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import jwtDecode, { JwtPayload} from 'jwt-decode'
+import { ITokenUser } from '../_interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +25,33 @@ export class TokenService {
     this.router.navigate(['/'])
   }
 
+  clearRelog(): void{
+    localStorage.removeItem('token')
+    this.router.navigate(['/auth/login'])
+  }
+
   getToken(): string | null{
     return localStorage.getItem('token')
+  }
+
+  getPayload(){
+
+    let user : ITokenUser = {
+      id: 0,
+      nom: '',
+      prenom: '',
+      email: ''
+    }
+
+    let token = localStorage.getItem('token')
+    if(token != null){
+      const decode = jwtDecode<ITokenUser>(token)
+      user.id = decode.id
+      user.nom = decode.nom
+      user.prenom = decode.prenom
+      user.email = decode.email
+    }
+
+    return user
   }
 }
